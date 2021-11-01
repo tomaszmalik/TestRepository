@@ -13,6 +13,7 @@ jobs:
     timeout-minutes: 15
 
     steps:
+    - uses: actions/checkout@v2
     - uses: ./.github/actions/build@v1
     
     - name: Finding files to Push
