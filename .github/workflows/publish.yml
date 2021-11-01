@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 15
 
     steps:
-    - uses: dotnet.yml
+    - uses: ./.github/workflows/dotnet.yml@v1
     
     - name: Finding files to Push
       id: finding-files
