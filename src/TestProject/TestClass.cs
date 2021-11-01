@@ -6,5 +6,9 @@ namespace TestProject
         {
 
         }
+        public void Test2()
+        {
+
+        }
     }
 }
