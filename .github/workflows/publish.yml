@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 15
 
     steps:
-    - uses: ./.github/actions/dotnet@v1
+    - uses: ./.github/actions/build@v1
     
     - name: Finding files to Push
       id: finding-files
