@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/build@master
+    - uses: ./.github/workflows/build.yml@master
     
     - name: Finding files to Push
       id: finding-files
