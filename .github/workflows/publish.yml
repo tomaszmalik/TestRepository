@@ -13,7 +13,6 @@ jobs:
     timeout-minutes: 15
 
     steps:
-    - uses: actions/checkout@v2
     - uses: tomaszmalik/TestRepository/.github/workflows/build.yml@master
     
     - name: Finding files to Push
