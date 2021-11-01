@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <Description></Description>
+    <PackageTags></PackageTags>
+
+    <PackageProjectUrl>https://www.TestProject.com/TestProject</PackageProjectUrl>
+    <PackageIconUrl>https://www.TestProject.com/TestProject/icon.png</PackageIconUrl>
+
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://www.TestProject.com/TestProject/license.txt</PackageLicenseUrl>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/TestProject/TestProject.TestProject-Docs.git</RepositoryUrl>
+  </PropertyGroup>
+</Project>
