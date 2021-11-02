@@ -20,11 +20,11 @@ jobs:
       id: finding-files
       run: |
         echo "::set-output name=FILELIST::$(find . -name '*.nupkg' -print)"    
-                 
+
     - name: Push
       run: |
         IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
         for i in "${myarray[@]}"; do
           echo "${i}"
-          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_NUGET_KEY }}       
+          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ GITHUB_NUGET_KEY }}       
         done
