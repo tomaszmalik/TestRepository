@@ -16,19 +16,17 @@ jobs:
     - uses: actions/checkout@v2
     - uses: TagBites/actions/dotnet-build@master
     
-    - name: Setup nuget feed
-      run: |
-        dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.NUGET_KEY_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
-    - name: Finding files to Push
+    - name: Finding nuget packages
       id: finding-files
       run: |
-        echo "::set-output name=FILELIST::$(find . -name '*.nupkg' -print)"             
+        echo "::set-output name=FILELIST::$(find . -name '*.nupkg' -print)"    
+                 
     - name: Push
       run: |
         IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
         for i in "${myarray[@]}"; do
           echo "${i}"
-          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.NUGET_KEY_GITHUB }}       
+          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ NUGET_KEY }}       
         done
       env:
-        NUGET_KEY: ${{ secrets.NUGET_KEY_GITHUB }}
+        NUGET_KEY: ${{ secrets.GITHUB_NUGET_KEY }}

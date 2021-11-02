@@ -10,6 +10,6 @@
     <PackageLicenseUrl>https://www.TestProject.com/TestProject/license.txt</PackageLicenseUrl>
 
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/TestProject/TestProject.TestProject-Docs.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/tomaszmalik/TestRepository.git</RepositoryUrl>
   </PropertyGroup>
 </Project>
