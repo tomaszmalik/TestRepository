@@ -3,7 +3,7 @@ name: publish
 on:
   push:
     tags:
-    - "v?[0-9]+.[0-9]+.[0-9]+"
+    - "v?[0-9]+.[0-9]+.[0-9]+-preview.[0-9]+"
 
 jobs:
   publish:
@@ -15,5 +15,5 @@ jobs:
     - uses: TagBites/actions/dotnet-build@master
     - uses: TagBites/actions/nuget-publish@master
       with:
-        nuget-source: "https://api.nuget.org/v3/index.json"
-        nuget-key: "${{ secrets.NUGET_KEY }}"
+        nuget-source: "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+        nuget-key: "${{ secrets.GITHUB_TOKEN }}"
