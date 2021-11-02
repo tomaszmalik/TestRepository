@@ -7,24 +7,14 @@ on:
     - "[0-9]+.[0-9]+.[0-9]+-.*"
 
 jobs:
-  build:
-
+  publish:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
     - uses: actions/checkout@v2
     - uses: TagBites/actions/dotnet-build@master
-    
-    - name: Finding nuget packages
-      id: finding-files
-      run: |
-        echo "::set-output name=FILELIST::$(find . -name '*.nupkg' -print)"    
-
-    - name: Push
-      run: |
-        IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
-        for i in "${myarray[@]}"; do
-          echo "${i}"
-          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.NUGET_KEY_GITHUB }}       
-        done
+    - uses: TagBites/actions/nuget-publish@master
+      with:
+        nuget-source: "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+        nuget-key: "${{ secrets.NUGET_KEY_GITHUB }}"
