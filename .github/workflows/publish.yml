@@ -17,4 +17,4 @@ jobs:
     - uses: TagBites/actions/nuget-publish@master
       with:
         nuget-source: "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
-        nuget-key: "${{ secrets.NUGET_KEY_GITHUB }}"
+        nuget-key: "${{ secrets.GITHUB_TOKEN }}"
