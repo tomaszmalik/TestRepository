@@ -19,7 +19,7 @@ jobs:
     - name: Finding files to Push
       id: finding-files
       run: |
-        echo "::set-output name=FILELIST::$(find . -name 'bin/*.nupkg' -print)"             
+        echo "::set-output name=FILELIST::$(find . -name '*.nupkg' -print)"             
     - name: Push
       run: |
         IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
