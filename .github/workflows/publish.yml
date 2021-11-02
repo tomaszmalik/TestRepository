@@ -26,7 +26,5 @@ jobs:
         IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
         for i in "${myarray[@]}"; do
           echo "${i}"
-          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ NUGET_KEY }}       
+          dotnet nuget push "${i}" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_NUGET_KEY }}       
         done
-      env:
-        NUGET_KEY: ${{ secrets.GITHUB_NUGET_KEY }}
