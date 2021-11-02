@@ -1,34 +1,17 @@
-name: build
+name: build & test
 
 on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]    
-  workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
-    secrets:
-      token:
-        required: true
+    branches: [ master ]  
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore -c Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal -c Release
+    - uses: TagBites/actions/dotnet-build@master
+    - uses: TagBites/actions/dotnet-test@master
